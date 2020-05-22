@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const bcrypt = require("bcrypt");
 const userModel = require("./../models/User");
-
+const exposeLoginStatus = require("./../middlewares/exposeLoginStatus");
 
 
 
@@ -10,38 +10,35 @@ router.get("/signup", (req, res) => {
     res.render("signup")
 });
 
-
-
 router.get("/signin", (req, res) => {
     res.render("signin")
 });
 
-router.get("/signout", (req, res) => {
+router.get("/logout", (req, res) => {
     req.session.destroy(() => res.redirect("/signin"));
 });
 
-router.post("/signin", (req, res, next) => {
+router.post("/signin",(req, res, next) => {
     const userInfos = req.body;
     if (!userInfos.email || !userInfos.password) {
         req.flash("warning", "Attention, email et password sont requis !");
         res.redirect("/signin");
     }
     userModel
-        .findOne({
-            email: userInfos.email
+        .findOne({email: userInfos.email
         })
         .then((user) => {
             if (!user) {
                 req.flash("error", "Identifiants incorrects");
                 res.redirect("/signin");
-            }
+            };
             const checkPassword = bcrypt.compareSync(
                 userInfos.password,
                 user.password);
             if (checkPassword === false) {
                 req.flash("error", "Identifiants incorrects");
                 res.redirect("/signin");
-            }
+            };
             const {
                 _doc: clone
             } = {
@@ -49,13 +46,13 @@ router.post("/signin", (req, res, next) => {
             };
             delete clone.password;
             req.session.currentUser = clone;
-            res.redirect("/index")
+            res.redirect("/signin")
         })
         .catch(next);
 });
 
 
-router.post("/signup", (req, res, next) => {
+router.post("/signup",(req, res, next) => {
     const user = req.body;
 
     if (!user.name || !user.lastname || !user.password || !user.email) {
@@ -90,16 +87,3 @@ router.post("/signup", (req, res, next) => {
 
 module.exports = router;
 
-
-
-
-
-
-
-
-
-
-
-
-
-module.exports = router;

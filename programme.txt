@@ -4,7 +4,7 @@ todo : routes: *auth (signin + signup)
                
 
 config:
-- routes => auth + dashboard-sneaker +index + app
+- routes => dashboard-sneaker + index + app
 - tous les users => créent des nouveaux produits + mettent à jour un produit + delete produit
 
 views:
@@ -16,6 +16,7 @@ views:
 
 
 *****************************OK**************************
+- route auth OK / gestion user OK 
 -debbug
 -modeles OK!!!!!!
 - bdd mongo 
