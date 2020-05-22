@@ -15,19 +15,19 @@ router.get("/", (req, res) => {
 });
 
 router.get("/sneakers/:cat", (req, res) => {
-  res.send("bar");
+  res.send("products");
 });
 
 router.get("/one-product/:id", (req, res) => {
-  res.send("baz");
+  res.send("one-product");
 });
 
 router.get("/signup", (req, res) => {
-  res.send("sneak");
+  res.send("signup");
 });
 
 router.get("/signin", (req, res) => {
-  res.send("love");
+  res.send("signin");
 });
 
 

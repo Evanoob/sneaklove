@@ -1,8 +1,10 @@
+todo : routes: *auth (signin + signup)
+               *dashboard-sneaker(one product + products-edit + products-add + products-manage + products)
+               dashboard_sneaker_row)
+               
 
 config:
-- bdd mongo
-- views => signup(se connecter) + signin(s'inscrire)
-- routes => users + auth
+- routes => auth + dashboard-sneaker +index + app
 - tous les users => créent des nouveaux produits + mettent à jour un produit + delete produit
 
 views:
@@ -10,6 +12,10 @@ views:
 - produits enfant
 - produits femme
 - produits homme
+*****************************OK**************************
+-debbug
+-modeles OK!!!!!!
+- bdd mongo 
 
 Schema:
 - User {  
@@ -33,7 +39,7 @@ Schema:
   label: String  
   }  
 
-
+*************************************************************
 Délai:
 - 25/05/2020 23h59
 
