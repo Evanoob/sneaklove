@@ -5,8 +5,12 @@ const userSchema = new Schema({
     name: String,
     lastname: String,
     email: String,
-    password: String
-})
+    password: {
+        min: 4,
+        required: true,
+        type: String,
+    }
+});
 
 const userModel = mongoose.model("User", userSchema);
 
