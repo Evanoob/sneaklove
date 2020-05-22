@@ -46,7 +46,7 @@ router.post("/signin",(req, res, next) => {
             };
             delete clone.password;
             req.session.currentUser = clone;
-            res.redirect("/signin")
+            res.redirect("/")
         })
         .catch(next);
 });
