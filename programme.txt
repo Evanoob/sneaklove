@@ -1,0 +1,49 @@
+
+config:
+- bdd mongo
+- views => signup(se connecter) + signin(s'inscrire)
+- routes => users + auth
+- tous les users => créent des nouveaux produits + mettent à jour un produit + delete produit
+
+views:
+- collection = afficher tous les produits 
+- produits enfant
+- produits femme
+- produits homme
+
+Schema:
+- User {  
+  name: String,  
+  lastname: String,  
+  email: String,  
+  password: String  
+  }  
+
+- Sneaker {  
+  name: String,  
+  ref: String,  
+  size: Number,  
+  description: String,  
+  price: Number,  
+  category: String [men, women, kids],  
+  id_tags: [ObjectId]  
+  }
+
+- Tags {  
+  label: String  
+  }  
+
+
+Délai:
+- 25/05/2020 23h59
+
+
+Bonus: si motivées et réussi!!
+********************************************************
+- Rendre boutique responsive avec flex et media-queries
+- Ajouter catégories personnalisées ===> ????
+- Coder des filtres en utilisant AJAX method
+
+Super Bonus !!
+********************************************************
+- Fonctionnalités panier

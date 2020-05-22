@@ -1,7 +1,8 @@
 const express = require("express");
 const router = express.Router();
+const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
 
-return console.log(`
+console.log(`
 -----------------------------
 -----------------------------
 node says : wax on / wax off !
@@ -10,7 +11,7 @@ node says : wax on / wax off !
 );
 
 router.get("/", (req, res) => {
-  res.send("foo");
+  res.render("index");
 });
 
 router.get("/sneakers/:cat", (req, res) => {

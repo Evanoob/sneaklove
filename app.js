@@ -3,6 +3,7 @@ require("./config/mongodb"); // database initial setup
 require("./helpers/hbs"); // utils for hbs templates
 
 // base dependencies
+//const path = require("path");
 const express = require("express");
 const app = express();
 const createError = require("http-errors");
@@ -12,17 +13,18 @@ const hbo = require("hbs");
 const mongoose = require("mongoose");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
-const dev_mode = false;
 const logger = require("morgan");
+const hbs = require("hbs");
+const dev_mode = false;
 
 // config logger (pour debug)
 app.use(logger("dev"));
 
 // initial config
 app.set("view engine", "hbs");
-app.set("views", __dirname + "/view");
+app.set("views", __dirname + "/views");
 app.use(express.static("public"));
-hbs.registerPartials(__dirname + "/views/partials");
+hbs.registerPartials(__dirname + "/views/partial");
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
@@ -56,8 +58,16 @@ if (dev_mode === true) {
 app.use(require("./middlewares/exposeLoginStatus")); // expose le status de connexion aux templates
 app.use(require("./middlewares/exposeFlashMessage")); // affiche les messages dans le template
 
+
 // routers
 app.use("/", require("./routes/index"));
+//app.use(require("./routes/categories"));
+//app.use(require("./routes/products"));
+//app.use(require("./routes/auth"));
+//app.use(require("./routes/users"));
+
+// config route API's
+//app.use(require("./routes/api.address"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
