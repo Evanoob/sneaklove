@@ -7,15 +7,19 @@ const sneackerSchema = new Schema({
     size: Number,
     description: String,
     price: Number,
-    image:{
-        type:String,
-        default:"https://www.giuntialpunto.it/sites/all/themes/gpunto/images/no-img-placeholder.png"
+    image: {
+        type: String,
+        default: "https://www.giuntialpunto.it/sites/all/themes/gpunto/images/no-img-placeholder.png"
     },
     category: {
         type: String,
-        enum: ["men", "women", "kids"]
+        enum: ["men", "women", "kids"],
+        default: "men"
     },
-    id_tags: ["ObjectId"]
+    id_tags: {
+        type: Schema.Types.ObjectId,
+        ref: "Tag"
+    }
 })
 
 const sneakerModel = mongoose.model("Sneaker", sneackerSchema);

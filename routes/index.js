@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const protectPrivateRoute = require("./../middlewares/protectPrivateRoute");
 
 console.log(`
 -----------------------------
@@ -15,11 +14,19 @@ router.get("/", (req, res) => {
 });
 
 router.get("/sneakers/:cat", (req, res) => {
+  
   res.render("products");
 });
 
-// router.get("/one-product/:id", (req, res) => {
-//   res.render("one-product");
-// });
+router.get("/one-product/:id", (req, res, next) => {
+  sneakerModel
+  .findById(req.params.id)
+  .then((dbRes) => {
+    res.render("one_product", {
+      sneaker: dbRes
+    })
+  })
+.catch(next)
+});
 
 module.exports = router;

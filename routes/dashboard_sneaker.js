@@ -8,7 +8,7 @@ const protectPrivateRoute = require('./../middlewares/protectPrivateRoute');
 router.get("/products", (req, res, next) => {
     sneakerModel
         .find()
-        .populate("category")
+        // .populate("category")
         .then((dbRes) => {
             res.render("products", {
                 sneakers: dbRes,
@@ -18,11 +18,20 @@ router.get("/products", (req, res, next) => {
         .catch(next);
 });
 
+router.get("/one_product", )
+// router.get("/products/:id" , async (req,res,next)=>{
+//     try{
+//         const sneaker = await sneakerModel.findById(req.params.id);
+//         res.render("one_product");
+//     } catch(dbErr){
+//         next(dbErr);
+//     }
+// });
 
 router.get("/products_manage", protectPrivateRoute, (req, res, next) => {
     sneakerModel
         .find()
-        .populate("category")
+        // .populate("category")
         .then((dbRes) =>
             res.render("products_manage", {
                 sneakers: dbRes,
@@ -43,6 +52,7 @@ router.get("/products_add", protectPrivateRoute, (req, res, next) => {
         ).catch(next);
 });
 router.get("/product_edit/:id", protectPrivateRoute, (req, res, next) => {
+
     sneakerModel
         .findById(req.params.id)
         .then((dbRes) => {
@@ -55,47 +65,31 @@ router.get("/product_edit/:id", protectPrivateRoute, (req, res, next) => {
 })
 
 router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req, res, next) => {
-    const sneaker = req.body;
+    const sneaker = { ...req.body } ;
     if (req.file) {
         sneaker.image = req.file.secure_url;
     }
     sneakerModel
         .create(sneaker)
         .then((dbRes) => {
-            res.redirect("products_manage")
+            res.redirect("/products_manage")
         })
         .catch(next);
 })
 
-router.post("/product_edit/:id", uploader.single("image"), (req, res, next) => {
-    const updateSneaker = {
-        ...req.body
-    };
-    if (req.file) {
-        updateSneaker.image = req.file.secure_url;
-    }
-    sneakerModel
-        .findByIdAndUpdate(req.params.id, updateSneaker)
-        .then(() => res.redirect("product_edit"))
+router.post("/product_edit/:id",(req, res, next) => {
+       sneakerModel
+        .findByIdAndUpdate(req.params.id, req.body)
+        .then(() => res.redirect("/products_manage"))
         .catch(next);
 });
 
-
-// router.post("/one_product", uploader.single("image"), 
-// (req,res,next)=>{
-//     const newSneaker = { ...req.body };
-//     if(req.file) newSneaker.image = req.file.secure_url;
-//     // console.log(">>> fichier posté ? >>>", req.file);
-// //   console.log(">>> nouveau produit >>> ", newSneaker);
-//   sneakerModel
-//   .create(newSneaker)
-//   .then((dbRes) =>{
-//     // console.log("produit ajouté en bdd >>> ", dbRes);  
-//     res.redirect("products_manage")
-//      })
-// .catch(next);
-// } );
-
+router.post("/product_delete/:id", (req,res,next)=>{
+    sneakerModel
+    .findByIdAndDelete(req.params.id)
+    .then((dbRes) => res.redirect("/products_manage"))
+    .catch(next);
+});
 
 
 module.exports = router;

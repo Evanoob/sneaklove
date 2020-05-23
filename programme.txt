@@ -1,11 +1,14 @@
 todo : routes: 
-               *dashboard-sneaker(one product + products-edit + products-add + products-manage + products)
-               dashboard_sneaker_row)
-               
+
+collection products
+kids
+women
+men
+one product
+
+tag modele + route             
 
 config:
-- routes => dashboard-sneaker + index + app
-- tous les users => créent des nouveaux produits + mettent à jour un produit + delete produit
 
 views:
 - collection = afficher tous les produits 
@@ -16,6 +19,9 @@ views:
 
 
 *****************************OK**************************
+- tous les users => créent des nouveaux produits + mettent à jour un produit + delete produit
+- routes => dashboard-sneaker + index + app
+-*dashboard-sneaker( + products-edit + products-add + products-manage dashboard_sneaker_row
 - route auth OK / gestion user OK 
 - debbug
 - modeles OK!!!!!!
