@@ -22,7 +22,7 @@ router.get("/products", (req, res, next) => {
 router.get("/products_manage", protectPrivateRoute, (req, res, next) => {
     sneakerModel
         .find()
-        .populate("category")
+        // .populate("category")
         .then((dbRes) =>
             res.render("products_manage", {
                 sneakers: dbRes,

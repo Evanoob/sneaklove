@@ -13,9 +13,13 @@ const sneackerSchema = new Schema({
     },
     category: {
         type: String,
-        enum: ["men", "women", "kids"]
+        enum: ["men", "women", "kids"],
+        default: "men",
     },
-    id_tags: ["ObjectId"]
+    id_tags: {
+        type: Schema.Types.ObjectId,
+        ref: "Tag"
+    }
 })
 
 const sneakerModel = mongoose.model("Sneaker", sneackerSchema);
