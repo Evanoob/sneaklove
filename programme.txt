@@ -1,4 +1,4 @@
-todo : routes: *auth (signin + signup)
+todo : routes: 
                *dashboard-sneaker(one product + products-edit + products-add + products-manage + products)
                dashboard_sneaker_row)
                
@@ -17,9 +17,11 @@ views:
 
 *****************************OK**************************
 - route auth OK / gestion user OK 
--debbug
--modeles OK!!!!!!
+- debbug
+- modeles OK!!!!!!
 - bdd mongo 
+- auth (signin + signup) OK
+
 
 Schema:
 - User {  

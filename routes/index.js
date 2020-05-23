@@ -18,9 +18,8 @@ router.get("/sneakers/:cat", (req, res) => {
   res.render("products");
 });
 
-router.get("/one-product/:id", (req, res) => {
-  res.render("one-product");
-});
-
+// router.get("/one-product/:id", (req, res) => {
+//   res.render("one-product");
+// });
 
 module.exports = router;

@@ -7,6 +7,10 @@ const sneackerSchema = new Schema({
     size: Number,
     description: String,
     price: Number,
+    image:{
+        type:String,
+        default:"https://www.giuntialpunto.it/sites/all/themes/gpunto/images/no-img-placeholder.png"
+    },
     category: {
         type: String,
         enum: ["men", "women", "kids"]
