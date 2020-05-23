@@ -58,15 +58,11 @@ if (dev_mode === true) {
 app.use(require("./middlewares/exposeLoginStatus")); // expose le status de connexion aux templates
 app.use(require("./middlewares/exposeFlashMessage")); // affiche les messages dans le template
 
-
 // routers
 app.use("/", require("./routes/index"));
 app.use(require("./routes/auth"));
 app.use(require("./routes/dashboard_sneaker"));
 
-
-// config route API's
-//app.use(require("./routes/api.address"));
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
