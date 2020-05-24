@@ -63,6 +63,14 @@ router.get("/product_edit/:id", protectPrivateRoute, (req, res, next) => {
         .catch(next);
 })
 
+router.get("/tag_add", protectPrivateRoute, (req, res, nex) => {
+    tagModel
+    .find()
+    .then((dbRes) => {
+        res.render("products")
+    })
+})
+
 router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req, res, next) => {
     const sneaker = {
         ...req.body
