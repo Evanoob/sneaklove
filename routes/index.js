@@ -14,17 +14,6 @@ router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/sneakers/:cat", (req, res, next) => {
-  sneakerModel
-    .find()
-    .then((dbRes) => {
-      res.render("products", {
-        sneakers: dbRes
-      })
-    })
-    .catch(next);
-});
-
 router.get("/sneakers/collection", (req, res, next) => {
   Promise.all([sneakerModel.find(), tagModel.find()])
     .then((dbRes) => {
