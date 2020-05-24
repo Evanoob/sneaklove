@@ -15,7 +15,7 @@ const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const logger = require("morgan");
 const hbs = require("hbs");
-const dev_mode = true;
+const dev_mode = false;
 
 // config logger (pour debug)
 app.use(logger("dev"));

@@ -2,7 +2,7 @@ const express = require("express");
 const router = new express.Router();
 const bcrypt = require("bcrypt");
 const userModel = require("./../models/User");
-const exposeLoginStatus = require("./../middlewares/exposeLoginStatus");
+
 
 
 
