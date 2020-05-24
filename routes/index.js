@@ -8,71 +8,72 @@ console.log(`
 -----------------------------
 node says : wax on / wax off !
 -----------------------------
------------------------------`
-);
+-----------------------------`);
 
 router.get("/", (req, res) => {
   res.render("index");
 });
 
-router.get("/sneakers/:cat", (req, res) => {
-  
-  res.render("products");
+router.get("/sneakers/:cat", (req, res, next) => {
+  sneakerModel
+    .find()
+    .then((dbRes) => {
+      res.render("products", {
+        sneakers: dbRes
+      })
+    })
+    .catch(next);
 });
 
-router.get("/sneakers/collection", (req,res, next) => {
+router.get("/sneakers/collection", (req, res, next) => {
   Promise.all([sneakerModel.find(), tagModel.find()])
-  .then((dbRes) => {
-    res.render("products", {
-      sneakers: dbRes[0],
-      tags:dbRes[1]
-    });
-  })
-  .catch(next)
+    .then((dbRes) => {
+      res.render("products", {
+        sneakers: dbRes[0],
+        tags: dbRes[1]
+      });
+    })
+    .catch(next)
 });
 
 router.get("/sneakers/men", (req, res, next) => {
-  Promise.all([sneakerModel.find( {"category": "men"} ), tagModel.find()])
-  .then((dbRes) => {
-    res.render("products", {
-      sneakers:dbRes[0],
-      tags: dbRes[1]
-    });
-  })
-  .catch(next)
+  Promise.all([sneakerModel.find({
+      "category": "men"
+    }), tagModel.find()])
+    .then((dbRes) => {
+      res.render("products", {
+        sneakers: dbRes[0],
+        tags: dbRes[1]
+      });
+    })
+    .catch(next)
 });
 
 router.get("/sneakers/women", (req, res, next) => {
-  Promise.all([sneakerModel.find( {"category": "women"} ), tagModel.find()])
-  .then((dbRes) => {
-    res.render("products", {
-     sneakers: dbRes[0],
-     tags: dbRes[1] 
-    });
-  })
-  .catch(next)
+  Promise.all([sneakerModel.find({
+      "category": "women"
+    }), tagModel.find()])
+    .then((dbRes) => {
+      res.render("products", {
+        sneakers: dbRes[0],
+        tags: dbRes[1]
+      });
+    })
+    .catch(next)
 });
 
 router.get("/sneakers/kids", (req, res, next) => {
-  Promise.all([sneakerModel.find( {"category": "kids"} ), tagModel.find()])
-  .then((dbRes) => {
-    res.render("products", {
-     sneakers: dbRes[0],
-     tags: dbRes[1] 
-    });
-  })
-  .catch(next)
+  Promise.all([sneakerModel.find({
+      "category": "kids"
+    }), tagModel.find()])
+    .then((dbRes) => {
+      res.render("products", {
+        sneakers: dbRes[0],
+        tags: dbRes[1]
+      });
+    })
+    .catch(next)
 });
 
-router.get("/one-product/:id", (req, res, next) => {
-  sneakerModel
-  .findById(req.params.id)
-  .then((dbRes) => {
-    res.render("one_product", {
-      sneaker: dbRes
-    })
-  })
-.catch(next)
-});
 
 module.exports = router;

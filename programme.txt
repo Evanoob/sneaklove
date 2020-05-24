@@ -1,21 +1,14 @@
-todo : routes: 
 
-collection products
-kids
-women
-men
-one product
+todo :        
 
-tag modele + route             
 
 config:
-
 views:
-- collection = afficher tous les produits 
+tri par catégorie
 - produits enfant
 - produits femme
 - produits homme
-
+- tag modele + route + create category  
 
 
 *****************************OK**************************
@@ -27,6 +20,8 @@ views:
 - modeles OK!!!!!!
 - bdd mongo 
 - auth (signin + signup) OK
+- collection = afficher tous les produits 
+- one product
 
 
 Schema:

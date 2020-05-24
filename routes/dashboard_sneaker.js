@@ -8,7 +8,6 @@ const protectPrivateRoute = require('./../middlewares/protectPrivateRoute');
 router.get("/products", (req, res, next) => {
     sneakerModel
         .find()
-        // .populate("category")
         .then((dbRes) => {
             res.render("products", {
                 sneakers: dbRes,
@@ -18,20 +17,19 @@ router.get("/products", (req, res, next) => {
         .catch(next);
 });
 
-router.get("/one_product", )
-// router.get("/products/:id" , async (req,res,next)=>{
-//     try{
-//         const sneaker = await sneakerModel.findById(req.params.id);
-//         res.render("one_product");
-//     } catch(dbErr){
-//         next(dbErr);
-//     }
-// });
+router.get("/one_product/:id", (req, res, next) => {
+    sneakerModel
+        .findById(req.params.id)
+        .then((dbRes) => {
+            res.render("one_product", {
+                sneaker:dbRes
+            })
+        }).catch(next);
+});
 
 router.get("/products_manage", protectPrivateRoute, (req, res, next) => {
     sneakerModel
         .find()
-        // .populate("category")
         .then((dbRes) =>
             res.render("products_manage", {
                 sneakers: dbRes,
@@ -65,7 +63,9 @@ router.get("/product_edit/:id", protectPrivateRoute, (req, res, next) => {
 })
 
 router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req, res, next) => {
-    const sneaker = { ...req.body } ;
+    const sneaker = {
+        ...req.body
+    };
     if (req.file) {
         sneaker.image = req.file.secure_url;
     }
@@ -77,18 +77,18 @@ router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req
         .catch(next);
 })
 
-router.post("/product_edit/:id",(req, res, next) => {
-       sneakerModel
+router.post("/product_edit/:id", (req, res, next) => {
+    sneakerModel
         .findByIdAndUpdate(req.params.id, req.body)
         .then(() => res.redirect("/products_manage"))
         .catch(next);
 });
 
-router.post("/product_delete/:id", (req,res,next)=>{
+router.post("/product_delete/:id", (req, res, next) => {
     sneakerModel
-    .findByIdAndDelete(req.params.id)
-    .then((dbRes) => res.redirect("/products_manage"))
-    .catch(next);
+        .findByIdAndDelete(req.params.id)
+        .then((dbRes) => res.redirect("/products_manage"))
+        .catch(next);
 });
 
 

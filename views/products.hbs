@@ -6,7 +6,7 @@
     <ul id="tag_list" class="tag-list" data-category="{{category}}">
       {{#each tags}}
       <li class="tag-list-item">
-        <input id="input_{{this._id}}" type="checkbox" data-tag-id="{{this._id}}" class="checkbox">
+        <input id="input_{{this._id}}" type="checkbox" data-tag-id="{{this._id}}" class="checkbox" name="label">
         <label for="input_{{this._id}}">{{this.name}}</label>
       </li>
       {{/each}}
