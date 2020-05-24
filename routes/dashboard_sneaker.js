@@ -86,6 +86,8 @@ router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req
         .catch(next);
 })
 
+
+
 router.post("/tag_add", protectPrivateRoute, (req, res, next) => {
     tagModel
     .create(req.body)

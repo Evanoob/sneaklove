@@ -1,13 +1,9 @@
 
 todo :        
 
-
 config:
 views:
-tri par catégorie
-- produits enfant
-- produits femme
-- produits homme
+
 - tag modele + route + create category  
 
 
@@ -22,7 +18,10 @@ tri par catégorie
 - auth (signin + signup) OK
 - collection = afficher tous les produits 
 - one product
-
+tri par catégorie
+- produits enfant
+- produits femme
+- produits homme
 
 Schema:
 - User {  
