@@ -2,6 +2,7 @@ const express = require("express"); // import express in this module
 const router = new express.Router(); // create an app sub-module (router)
 const uploader = require("./../config/cloudinary");
 const sneakerModel = require("./../models/Sneaker");
+const tagModel = require("./../models/Tag")
 const protectPrivateRoute = require('./../middlewares/protectPrivateRoute');
 
 
@@ -75,6 +76,15 @@ router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req
             res.redirect("/products_manage")
         })
         .catch(next);
+})
+
+router.post("/tag_add", protectPrivateRoute, (req, res, next) => {
+    tagModel
+    .create(req.body)
+    .then((dbRes) => {
+        res.redirect("/products_add")
+    })
+    .catch(next)
 })
 
 router.post("/product_edit/:id", (req, res, next) => {
