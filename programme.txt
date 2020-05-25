@@ -1,10 +1,17 @@
+*************************************************************
+Délai:
+- 25/05/2020 23h59
 
-todo :        
 
-config:
-views:
+Bonus: si motivées et réussi!!
+********************************************************
+- Rendre boutique responsive avec flex et media-queries
+- Ajouter catégories personnalisées ===> ????
+- Coder des filtres en utilisant AJAX method
 
-- tag modele + route + create category  
+Super Bonus !!
+********************************************************
+- Fonctionnalités panier
 
 
 *****************************OK**************************
@@ -22,6 +29,8 @@ tri par catégorie
 - produits enfant
 - produits femme
 - produits homme
+
+- tag modele + route + create category  
 
 Schema:
 - User {  
@@ -45,17 +54,4 @@ Schema:
   label: String  
   }  
 
-*************************************************************
-Délai:
-- 25/05/2020 23h59
 
-
-Bonus: si motivées et réussi!!
-********************************************************
-- Rendre boutique responsive avec flex et media-queries
-- Ajouter catégories personnalisées ===> ????
-- Coder des filtres en utilisant AJAX method
-
-Super Bonus !!
-********************************************************
-- Fonctionnalités panier
