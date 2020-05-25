@@ -79,11 +79,15 @@ router.post("/products_add", uploader.single("image"), protectPrivateRoute, (req
         .catch(next);
 })
 
-router.post("/product_edit/:id",protectPrivateRoute, (req, res, next) => {
-    sneakerModel
-        .findByIdAndUpdate(req.params.id, req.body)
-        .then(() => res.redirect("/products_manage"))
-        .catch(next);
+router.get("/product_edit/:id", protectPrivateRoute, (req, res, next) => {
+    Promise.all([sneakerModel.findById(req.params.id), tagModel.find()])
+        .then((dbRes) => {
+            res.render("product_edit", {
+                sneakers: dbRes[0],
+                tags: dbRes[1]
+            })
+        })
+        .catch(next)
 });
 
 router.post("/product_delete/:id", protectPrivateRoute, (req, res, next) => {
