@@ -10,10 +10,12 @@ node says : wax on / wax off !
 -----------------------------
 -----------------------------`);
 
+// path index
 router.get("/", (req, res) => {
   res.render("index");
 });
 
+// path sneakers collections
 router.get("/sneakers/collection", (req, res, next) => {
   Promise.all([sneakerModel.find(), tagModel.find()])
     .then((dbRes) => {
@@ -25,6 +27,7 @@ router.get("/sneakers/collection", (req, res, next) => {
     .catch(next)
 });
 
+// path sneakers : men
 router.get("/sneakers/men", (req, res, next) => {
   Promise.all([sneakerModel.find({
       "category": "men"
@@ -38,6 +41,7 @@ router.get("/sneakers/men", (req, res, next) => {
     .catch(next)
 });
 
+//path sneakers : women
 router.get("/sneakers/women", (req, res, next) => {
   Promise.all([sneakerModel.find({
       "category": "women"
@@ -51,6 +55,7 @@ router.get("/sneakers/women", (req, res, next) => {
     .catch(next)
 });
 
+// path sneakers : kids
 router.get("/sneakers/kids", (req, res, next) => {
   Promise.all([sneakerModel.find({
       "category": "kids"

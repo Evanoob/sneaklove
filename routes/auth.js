@@ -5,19 +5,22 @@ const userModel = require("./../models/User");
 
 
 
-
+// path for signyup
 router.get("/signup", (req, res) => {
     res.render("signup")
 });
 
+// path for signin
 router.get("/signin", (req, res) => {
     res.render("signin")
 });
 
+// path for logout
 router.get("/logout", (req, res) => {
     req.session.destroy(() => res.redirect("/signin"));
 });
 
+// path to post form signin
 router.post("/signin",(req, res, next) => {
     const userInfos = req.body;
     if (!userInfos.email || !userInfos.password) {
@@ -51,7 +54,7 @@ router.post("/signin",(req, res, next) => {
         .catch(next);
 });
 
-
+// path to post form signup
 router.post("/signup",(req, res, next) => {
     const user = req.body;
 

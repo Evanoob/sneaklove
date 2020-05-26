@@ -1,5 +1,6 @@
 console.log("hello")
 
+// Burger menu
 const burger = () => {
     const btnresponsive = document.querySelector(".burger");
     const nav = document.querySelector(".nav-link");
