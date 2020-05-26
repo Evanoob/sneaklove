@@ -78,3 +78,112 @@ h4 {
   border-color: #c3e6cb;
   box-shadow: -0.3px 0.1px 2.4px 0.1px #155724;
 } 
+
+@media screen and (min-width: 769px) {
+  .burger {
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+
+  .nav-link {
+      position: absolute;
+      right: 0;
+      height: 50vh;
+      top: 8vh;
+      background: black;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform .5s ease-in-out;
+
+  }
+
+  .nav-active {
+      transform: translateX(0%);
+  } 
+
+  /* .flexed-item.nav-end {
+      position: absolute;
+      right: 0;
+      top: 35vh;
+      background: black;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      width: 50%;
+      transform: translateX(100%);
+      transition: transform .5s ease-in-out;
+  } */
+
+  .nav-item.animated-link {
+      list-style: none;
+  }
+
+  .nav-item.animated-link a {
+      color: white;
+  }
+
+  .nav-active {
+      transform: translateX(0%);
+  }
+
+  .burger {
+      display: block;
+      /* hauteur */
+      height: 7vh;
+      /* largeur */
+      width: 7vw;
+      position: relative;
+      top: -5vh;
+      left: 90%;
+  }
+
+  .burger span {
+      width: 100%;
+      height: 4px;
+      background: black;
+      display: block;
+      position: absolute;
+      transform: translateY(1vh);
+  }
+
+  /* creation des autres barres span */
+  .burger span::before,
+  .burger span::after {
+      content: '';
+      width: 100%;
+      height: 4px;
+      position: absolute;
+      background: black;
+
+  }
+
+  .burger span::before {
+      transform: translateY(-1vh);
+  }
+
+  .burger span::after {
+      transform: translateY(1vh);
+  }
+
+    /* premier span */
+    .burger.active span::before {
+      transform: translateY(0px) rotateZ(45deg);
+  }
+
+  /* 2nd span */
+  .burger.active span {
+      background: transparent;
+  }
+
+  /* 3rd span */
+  .burger.active span::after {
+      transform: translateY(0px) rotateZ(-45deg);
+  }
+
+}
